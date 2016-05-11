@@ -32,6 +32,7 @@ class WeatherViewModel {
     
     var cityName = PublishSubject<String?>()
     var degrees = PublishSubject<String?>()
+    var weatherDescription = PublishSubject<String?>()
     var disposeBag = DisposeBag()
      var errorAlertController = PublishSubject<UIAlertController>()
     
@@ -47,6 +48,9 @@ class WeatherViewModel {
         cityName.on(.Next(weather?.city))
         if let temp = weather?.weatherForecast?.temp {
             degrees.on(.Next(String(temp)))
+        }
+        if let weatherDesc = weather?.weatherForecast?.desc {
+            weatherDescription.on(.Next(String(weatherDesc)))
         }
     }
     

@@ -12,7 +12,7 @@
 @interface Weather : NSObject
 
 @property(weak,nonatomic) NSString *city;
-@property(weak,nonatomic) WeatherForecast *weatherForecast;
+@property(retain) WeatherForecast *weatherForecast;
 
 -(id)initWithData:(NSDictionary *)weatherDict;
 

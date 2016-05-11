@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
     
+    @IBOutlet weak var descriptionLabel: UILabel!
     let disposeBag = DisposeBag()
     var viewModel = WeatherViewModel()
     var boundToViewModel = false
@@ -55,12 +56,13 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         
         bindSourceToLabel(viewModel.cityName, label: cityNameLabel)
         bindSourceToLabel(viewModel.degrees, label: tempLabel)
+        bindSourceToLabel(viewModel.weatherDescription, label: descriptionLabel)
         
         viewModel.errorAlertController.subscribeNext { alertController in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.alertController = alertController
             })
-            }
+        }
             .addDisposableTo(disposeBag)
     }
 
