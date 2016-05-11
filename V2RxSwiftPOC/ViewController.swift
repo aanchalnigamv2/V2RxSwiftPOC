@@ -7,19 +7,69 @@
 //
 
 import UIKit
+import Foundation
+import RxCocoa
+import RxSwift
+import Alamofire
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIAlertViewDelegate {
 
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var cityNameLabel: UILabel!
+    
+    let disposeBag = DisposeBag()
+    var viewModel = WeatherViewModel()
+    var boundToViewModel = false
+    
+    func bindSourceToLabel(source: PublishSubject<String?>, label: UILabel) {
+        source
+            .subscribeNext { text in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    label.text = text
+                })
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    var alertController: UIAlertController? {
+        didSet {
+            if let alertController = alertController {
+                alertController.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+                presentViewController(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+     
+        cityTextField.rx_text
+            .debounce(0.3, scheduler: MainScheduler.instance)
+            
+            .subscribeNext { searchText in
+                self.viewModel.searchText = searchText
+            }
+            .addDisposableTo(disposeBag)
+        
+        
+        bindSourceToLabel(viewModel.cityName, label: cityNameLabel)
+        bindSourceToLabel(viewModel.degrees, label: tempLabel)
+        
+        viewModel.errorAlertController.subscribeNext { alertController in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.alertController = alertController
+            })
+            }
+            .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    
 
 }
 
