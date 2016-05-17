@@ -33,8 +33,11 @@ class WeatherViewModel {
     var cityName = PublishSubject<String?>()
     var degrees = PublishSubject<String?>()
     var weatherDescription = PublishSubject<String?>()
+    private var forecast:[String]?
     var disposeBag = DisposeBag()
-     var errorAlertController = PublishSubject<UIAlertController>()
+    var errorAlertController = PublishSubject<UIAlertController>()
+    
+    var observableLanguageArray = PublishSubject<[AnyObject]>()
     
     var weather: Weather? {
         didSet {
@@ -46,12 +49,21 @@ class WeatherViewModel {
     
     func updateModel() {
         cityName.on(.Next(weather?.city))
+        observableLanguageArray.on(.Next(Array(arrayLiteral: (weather?.languageArray)!)))
         if let temp = weather?.weatherForecast?.temp {
             degrees.on(.Next(String(temp)))
         }
         if let weatherDesc = weather?.weatherForecast?.desc {
             weatherDescription.on(.Next(String(weatherDesc)))
         }
+//        forecast = (weather?.weatherArray)! as NSArray as? [String]
+//        if forecast != nil {
+//            sendTableViewData()
+//        }
+    }
+    
+    func sendTableViewData() {
+        
     }
     
     var searchText:String? {

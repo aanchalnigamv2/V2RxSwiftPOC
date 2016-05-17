@@ -13,6 +13,7 @@
 
 @property(weak,nonatomic) NSString *city;
 @property(retain) WeatherForecast *weatherForecast;
+@property(retain) NSMutableArray *languageArray;
 
 -(id)initWithData:(NSDictionary *)weatherDict;
 

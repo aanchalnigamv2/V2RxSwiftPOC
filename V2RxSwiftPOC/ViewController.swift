@@ -22,6 +22,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     let disposeBag = DisposeBag()
     var viewModel = WeatherViewModel()
     var boundToViewModel = false
+    var array = [AnyObject]()
     
     func bindSourceToLabel(source: PublishSubject<String?>, label: UILabel) {
         source
@@ -58,12 +59,20 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         bindSourceToLabel(viewModel.degrees, label: tempLabel)
         bindSourceToLabel(viewModel.weatherDescription, label: descriptionLabel)
         
+        
+        
+        viewModel.observableLanguageArray.subscribeNext { data in
+            self.array = data
+            print(self.array)
+        }
+        .addDisposableTo(disposeBag)
+        
         viewModel.errorAlertController.subscribeNext { alertController in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.alertController = alertController
             })
         }
-            .addDisposableTo(disposeBag)
+        .addDisposableTo(disposeBag)
     }
 
     override func didReceiveMemoryWarning() {
