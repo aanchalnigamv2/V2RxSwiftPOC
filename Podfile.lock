@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (3.0.0)
+  - NSObject+Rx (1.2.0):
+    - RxSwift (~> 2.0.0)
   - RxAlamofire (1.1.1):
     - RxAlamofire/Core (= 1.1.1)
   - RxAlamofire/Core (1.1.1):
@@ -9,14 +11,19 @@ PODS:
     - RxSwift (~> 2.0)
   - RxCocoa (2.0.0):
     - RxSwift (~> 2.0)
+  - RxDataSources (0.3):
+    - RxCocoa (~> 2.0)
+    - RxSwift (~> 2.0)
   - RxSwift (2.0.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (= 3.0.0)
+  - NSObject+Rx
   - RxAlamofire
   - RxBlocking (~> 2.0.0-beta)
   - RxCocoa (~> 2.0.0-beta)
+  - RxDataSources
   - RxSwift (~> 2.0.0-beta)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
@@ -31,9 +38,11 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: b61782387f81bcc538a0284cf2bb5d7995cd0a80
+  NSObject+Rx: 552d0a5bb78087b0faf9f8a066148577f1231426
   RxAlamofire: 5900f3842dd7bad9ca620bfb5917b9c984db5cca
   RxBlocking: a95a10ed54eb5d116f6c9a87047ff671e181d07b
   RxCocoa: b0ebd70b4f7450bdb3c8987b122f8fd568dc1e2f
+  RxDataSources: 6993a25d61c795f8d127a78f688b71376d5a4dad
   RxSwift: d83246efa6f16c50c143bec134649d045498f601
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 

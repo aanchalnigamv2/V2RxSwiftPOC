@@ -85,17 +85,21 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-V2RxSwiftPOC/Alamofire.framework"
+  install_framework "Pods-V2RxSwiftPOC/NSObject_Rx.framework"
   install_framework "Pods-V2RxSwiftPOC/RxAlamofire.framework"
   install_framework "Pods-V2RxSwiftPOC/RxBlocking.framework"
   install_framework "Pods-V2RxSwiftPOC/RxCocoa.framework"
+  install_framework "Pods-V2RxSwiftPOC/RxDataSources.framework"
   install_framework "Pods-V2RxSwiftPOC/RxSwift.framework"
   install_framework "Pods-V2RxSwiftPOC/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-V2RxSwiftPOC/Alamofire.framework"
+  install_framework "Pods-V2RxSwiftPOC/NSObject_Rx.framework"
   install_framework "Pods-V2RxSwiftPOC/RxAlamofire.framework"
   install_framework "Pods-V2RxSwiftPOC/RxBlocking.framework"
   install_framework "Pods-V2RxSwiftPOC/RxCocoa.framework"
+  install_framework "Pods-V2RxSwiftPOC/RxDataSources.framework"
   install_framework "Pods-V2RxSwiftPOC/RxSwift.framework"
   install_framework "Pods-V2RxSwiftPOC/SwiftyJSON.framework"
 fi

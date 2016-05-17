@@ -8,5 +8,7 @@ target 'V2RxSwiftPOC' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
     pod 'Alamofire', ' 3.0.0'
     pod 'RxAlamofire'
+    pod 'RxDataSources'
+    pod 'NSObject+Rx'
 
 end

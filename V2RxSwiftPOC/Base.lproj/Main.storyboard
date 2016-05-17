@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="84A-pK-Pr0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -154,6 +154,67 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="382" y="394"/>
+        </scene>
+        <!--City Search-->
+        <scene sceneID="YTU-Cy-Pd2">
+            <objects>
+                <viewController id="84A-pK-Pr0" customClass="CityViewController" customModule="V2RxSwiftPOC" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T4C-WQ-dMl"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yzu-Jp-YMY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sej-U4-1OW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6oK-Ux-919">
+                                <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fBT-Hg-d8N">
+                                <rect key="frame" x="0.0" y="108" width="320" height="492"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cityPrototypeCell" textLabel="wYJ-4X-Zc3" style="IBUITableViewCellStyleDefault" id="ExU-t7-Wel">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ExU-t7-Wel" id="ZwD-Gz-IPZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wYJ-4X-Zc3">
+                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fBT-Hg-d8N" secondAttribute="trailing" id="0rM-cS-9GF"/>
+                            <constraint firstItem="6oK-Ux-919" firstAttribute="leading" secondItem="Sej-U4-1OW" secondAttribute="leading" id="3Tj-Sx-WsL"/>
+                            <constraint firstItem="6oK-Ux-919" firstAttribute="top" secondItem="T4C-WQ-dMl" secondAttribute="bottom" id="6As-Zl-91P"/>
+                            <constraint firstItem="Yzu-Jp-YMY" firstAttribute="top" secondItem="fBT-Hg-d8N" secondAttribute="bottom" id="HEe-ag-wFr"/>
+                            <constraint firstAttribute="trailing" secondItem="6oK-Ux-919" secondAttribute="trailing" id="J8B-OC-Q04"/>
+                            <constraint firstItem="fBT-Hg-d8N" firstAttribute="leading" secondItem="Sej-U4-1OW" secondAttribute="leading" id="Si6-1j-fgv"/>
+                            <constraint firstItem="fBT-Hg-d8N" firstAttribute="top" secondItem="6oK-Ux-919" secondAttribute="bottom" id="ssP-u1-EKl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="City Search" id="YcF-hO-wHW"/>
+                    <connections>
+                        <outlet property="searchBar" destination="6oK-Ux-919" id="zn0-5w-AKO"/>
+                        <outlet property="tableView" destination="fBT-Hg-d8N" id="KLy-H3-9ch"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GzF-fo-vtw" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="948" y="399"/>
         </scene>
     </scenes>
 </document>
