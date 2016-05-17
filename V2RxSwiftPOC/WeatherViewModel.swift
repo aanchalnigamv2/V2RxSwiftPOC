@@ -38,7 +38,8 @@ class WeatherViewModel {
     var errorAlertController = PublishSubject<UIAlertController>()
     
     var observableLanguageArray = PublishSubject<[AnyObject]>()
-    
+
+  
     var weather: Weather? {
         didSet {
             if weather?.city != nil {
@@ -49,7 +50,10 @@ class WeatherViewModel {
     
     func updateModel() {
         cityName.on(.Next(weather?.city))
+      
         observableLanguageArray.on(.Next(Array(arrayLiteral: (weather?.languageArray)!)))
+
+      
         if let temp = weather?.weatherForecast?.temp {
             degrees.on(.Next(String(temp)))
         }

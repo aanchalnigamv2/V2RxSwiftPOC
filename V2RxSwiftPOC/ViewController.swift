@@ -19,6 +19,8 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var cityNameLabel: UILabel!
     
     @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var showCities: UILabel!
+  
     let disposeBag = DisposeBag()
     var viewModel = WeatherViewModel()
     var boundToViewModel = false
@@ -64,9 +66,16 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         viewModel.observableLanguageArray.subscribeNext { data in
             self.array = data
             print(self.array)
+          
+          for i in 0  ..< self.array.count  {
+            self.showCities.text = self.showCities.text! + "\(self.array[i])"
+          }
+          
+          
+//            self.showCities.text = "\(self.array)"
         }
         .addDisposableTo(disposeBag)
-        
+      
         viewModel.errorAlertController.subscribeNext { alertController in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.alertController = alertController
@@ -80,6 +89,14 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+  @IBAction func addCity(sender: AnyObject) {
+    
+//    if let newCity = cityTextField.text {
+//      Weather().languageArray.addObject(newCity)
+//    }
+    
+    
+  }
     
 
 }
