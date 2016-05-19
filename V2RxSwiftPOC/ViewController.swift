@@ -12,19 +12,27 @@ import RxCocoa
 import RxSwift
 import Alamofire
 
+
+
 class ViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var cityNameLabel: UILabel!
-    
     @IBOutlet weak var descriptionLabel: UILabel!
-  @IBOutlet weak var showCities: UILabel!
+    @IBOutlet weak var showCities: UILabel!
   
     let disposeBag = DisposeBag()
     var viewModel = WeatherViewModel()
     var boundToViewModel = false
     var array = [AnyObject]()
+    
+    var myArray : Variable<NSArray>!
+    
+    var arrayObj: ObservableArray<String> = ["foo", "bar", "buzz"]
+    
+    var testArray1 : [String] = ["A", "B", "C"]
+    var testArray2 = PublishSubject<[String]>()
     
     func bindSourceToLabel(source: PublishSubject<String?>, label: UILabel) {
         source
@@ -47,7 +55,31 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+//        myArray = Variable(testArray1)
+//        
+//        myArray.asObservable()
+//            .subscribeNext { value in
+//            print(value)
+//        }
+        
+        
+//        arrayObj.rx_elements().subscribe() {
+//            print($0)
+//        }
+        
+        arrayObj.rx_elements().subscribeNext {
+            print($0)
+        
+        
+        }
+        
+//        arrayObj.append("coffee")
+//        arrayObj[2] = "milk"
+//        arrayObj.removeAll()
+        
+        arrayObj.append("Test")
+        
         cityTextField.rx_text
             .debounce(0.3, scheduler: MainScheduler.instance)
             
@@ -82,6 +114,16 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             })
         }
         .addDisposableTo(disposeBag)
+        
+        testArray1.append("D")
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        testArray2.on(.Next(Array(testArray1)))
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +132,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     }
     
   @IBAction func addCity(sender: AnyObject) {
+    
+//    myArray.value = ["b"]
+
+    arrayObj.append("coffee")
     
 //    if let newCity = cityTextField.text {
 //      Weather().languageArray.addObject(newCity)

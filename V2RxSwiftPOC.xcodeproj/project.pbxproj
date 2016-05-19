@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1846B57E150575C402E360C2 /* Pods_V2RxSwiftPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D258C7D02065F3AAEAE9C893 /* Pods_V2RxSwiftPOC.framework */; };
+		877565C71CEDCC0C00AACF96 /* ObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877565C61CEDCC0C00AACF96 /* ObservableArray.swift */; };
 		879E3ACE1CE092BD00014D03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E3ACD1CE092BD00014D03 /* AppDelegate.swift */; };
 		879E3AD01CE092BD00014D03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E3ACF1CE092BD00014D03 /* ViewController.swift */; };
 		879E3AD31CE092BD00014D03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879E3AD11CE092BD00014D03 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		877565C61CEDCC0C00AACF96 /* ObservableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
+		877565C81CEDCC9900AACF96 /* ObservableArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObservableArray.h; sourceTree = "<group>"; };
 		879E3ACA1CE092BD00014D03 /* V2RxSwiftPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2RxSwiftPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879E3ACD1CE092BD00014D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		879E3ACF1CE092BD00014D03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 				87D24B6D1CE0A07F004C2D49 /* WeatherForecast.m */,
 				87D24B671CE09C47004C2D49 /* Weather.h */,
 				87D24B681CE09C47004C2D49 /* Weather.m */,
+				877565C81CEDCC9900AACF96 /* ObservableArray.h */,
 				87D24B661CE09C47004C2D49 /* V2RxSwiftPOC-Bridging-Header.h */,
 			);
 			name = Model;
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				87D24B6F1CE0BAB5004C2D49 /* WeatherViewModel.swift */,
+				877565C61CEDCC0C00AACF96 /* ObservableArray.swift */,
 				87FBA7591CE1F7E500BB62BF /* RxAlamofire.swift */,
 			);
 			name = ViewModel;
@@ -280,6 +285,7 @@
 				87D24B691CE09C47004C2D49 /* Weather.m in Sources */,
 				879E3AD01CE092BD00014D03 /* ViewController.swift in Sources */,
 				879E3ACE1CE092BD00014D03 /* AppDelegate.swift in Sources */,
+				877565C71CEDCC0C00AACF96 /* ObservableArray.swift in Sources */,
 				87FBA75A1CE1F7E500BB62BF /* RxAlamofire.swift in Sources */,
 				87D24B6E1CE0A07F004C2D49 /* WeatherForecast.m in Sources */,
 			);

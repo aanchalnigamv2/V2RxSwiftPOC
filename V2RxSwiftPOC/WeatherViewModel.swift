@@ -33,12 +33,12 @@ class WeatherViewModel {
     var cityName = PublishSubject<String?>()
     var degrees = PublishSubject<String?>()
     var weatherDescription = PublishSubject<String?>()
-    private var forecast:[String]?
+    private var forecast:[AnyObject]?
+    var weatherImage = PublishSubject<UIImage?>()
     var disposeBag = DisposeBag()
     var errorAlertController = PublishSubject<UIAlertController>()
     
     var observableLanguageArray = PublishSubject<[AnyObject]>()
-
   
     var weather: Weather? {
         didSet {
@@ -50,24 +50,54 @@ class WeatherViewModel {
     
     func updateModel() {
         cityName.on(.Next(weather?.city))
+        
+        if let temp = weather?.currentWeather.temp {
+            degrees.on(.Next(String(temp)))
+        }
+        
+        weatherDescription.on(.Next(weather?.currentWeather.desc))
+        
+        if let id = weather?.currentWeather.imageID {
+            setWeatherImageForImageID(id)
+        }
+        
+        forecast = weather!.cityDetailArray as [AnyObject]
+        if forecast != nil {
+            sendTableViewData()
+        }
+        
       
-        observableLanguageArray.on(.Next(Array(arrayLiteral: (weather?.languageArray)!)))
-
-      
+       /* observableLanguageArray.on(.Next(Array(arrayLiteral: (weather?.languageArray)!)))
         if let temp = weather?.weatherForecast?.temp {
             degrees.on(.Next(String(temp)))
         }
         if let weatherDesc = weather?.weatherForecast?.desc {
             weatherDescription.on(.Next(String(weatherDesc)))
         }
-//        forecast = (weather?.weatherArray)! as NSArray as? [String]
-//        if forecast != nil {
-//            sendTableViewData()
-//        }
+        forecast = (weather?.weatherArray)! as NSArray as? [String]
+        if forecast != nil {
+            sendTableViewData()
+        }*/
+    }
+    
+    func setWeatherImageForImageID(imageID: String) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) { () -> Void in
+            if let url = NSURL(string: Constants.baseImageURL + imageID + Constants.imageExtension) {
+                if let data = NSData(contentsOfURL: url) {
+                    dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                        self.weatherImage.on(.Next(UIImage(data: data)))
+                    }
+                }
+            }
+        }
     }
     
     func sendTableViewData() {
-        
+        if let currentForecast = forecast {
+            var dailyForecast = [[WeatherForecast]]()
+            var days = [String]()
+            days.append(NSDate(timeIntervalSinceNow: 0).dayString)
+        }
     }
     
     var searchText:String? {

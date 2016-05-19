@@ -12,8 +12,10 @@
 @interface Weather : NSObject
 
 @property(weak,nonatomic) NSString *city;
-@property(retain) WeatherForecast *weatherForecast;
-@property(retain) NSMutableArray *languageArray;
+//@property(retain) NSMutableArray *languageArray;
+@property(retain) NSArray *weatherArray;
+@property(retain) NSMutableArray *cityDetailArray;
+@property(retain) WeatherForecast *currentWeather;
 
 -(id)initWithData:(NSDictionary *)weatherDict;
 
