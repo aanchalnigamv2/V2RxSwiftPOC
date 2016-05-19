@@ -12,6 +12,8 @@ import RxCocoa
 import RxSwift
 import Alamofire
 
+import ObservableArray
+
 class ViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var cityTextField: UITextField!
@@ -23,9 +25,15 @@ class ViewController: UIViewController, UIAlertViewDelegate {
   
     let disposeBag = DisposeBag()
     var viewModel = WeatherViewModel()
+    var weather = Weather()
     var boundToViewModel = false
     var array = [AnyObject]()
-    
+//    var observableLanguageArray = PublishSubject<[AnyObject]>()
+  
+  var testArray = PublishSubject<[String]>()
+  
+  var demoArray = ["A","B","C"]
+  
     func bindSourceToLabel(source: PublishSubject<String?>, label: UILabel) {
         source
             .subscribeNext { text in
@@ -35,6 +43,29 @@ class ViewController: UIViewController, UIAlertViewDelegate {
             }
             .addDisposableTo(disposeBag)
     }
+  
+  func bindArraySourceToLabel(source: PublishSubject<[AnyObject]>, label: UILabel) {
+    source
+      .subscribeNext { text in
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+          label.text = "\(text)"
+        })
+      }
+      .addDisposableTo(disposeBag)
+  }
+  
+  func bindTestArray(source : PublishSubject<[String]>, label: UILabel){
+    source
+      .subscribeNext { text in
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//          label.text = "\(text)"
+          
+          print(text)
+        })
+      }
+      .addDisposableTo(disposeBag)
+
+  }
     
     var alertController: UIAlertController? {
         didSet {
@@ -48,6 +79,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+      testArray.on(.Next(Array(demoArray)))
+      
+      
+      
         cityTextField.rx_text
             .debounce(0.3, scheduler: MainScheduler.instance)
             
@@ -60,8 +95,10 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         bindSourceToLabel(viewModel.cityName, label: cityNameLabel)
         bindSourceToLabel(viewModel.degrees, label: tempLabel)
         bindSourceToLabel(viewModel.weatherDescription, label: descriptionLabel)
-        
-        
+//        bindArraySourceToLabel(viewModel.observableLanguageArray, label: showCities)
+      
+      
+      bindTestArray(testArray, label: showCities)
         
         viewModel.observableLanguageArray.subscribeNext { data in
             self.array = data
@@ -91,13 +128,12 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     
   @IBAction func addCity(sender: AnyObject) {
     
-//    if let newCity = cityTextField.text {
-//      Weather().languageArray.addObject(newCity)
-//    }
-    
-    
+//    weather.languageArray.addObject("C++")
+    demoArray.append("A")
   }
-    
+  
+
+
 
 }
 

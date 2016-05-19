@@ -15,6 +15,8 @@
 @property(retain) WeatherForecast *weatherForecast;
 @property(retain) NSMutableArray *languageArray;
 
--(id)initWithData:(NSDictionary *)weatherDict;
+-(id)updateValue:(NSDictionary *)weatherDict;
+
+-(id)init;
 
 @end

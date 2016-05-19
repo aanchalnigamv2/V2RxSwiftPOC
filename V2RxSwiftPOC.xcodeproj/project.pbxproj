@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1846B57E150575C402E360C2 /* Pods_V2RxSwiftPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D258C7D02065F3AAEAE9C893 /* Pods_V2RxSwiftPOC.framework */; };
+		61D91DFB1CEDC8CF00DE5972 /* ObservableArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D91DFA1CEDC8CF00DE5972 /* ObservableArray.swift */; };
 		879E3ACE1CE092BD00014D03 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E3ACD1CE092BD00014D03 /* AppDelegate.swift */; };
 		879E3AD01CE092BD00014D03 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 879E3ACF1CE092BD00014D03 /* ViewController.swift */; };
 		879E3AD31CE092BD00014D03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 879E3AD11CE092BD00014D03 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		61D91DF91CEDC8CF00DE5972 /* ObservableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservableArray.h; sourceTree = "<group>"; };
+		61D91DFA1CEDC8CF00DE5972 /* ObservableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
 		879E3ACA1CE092BD00014D03 /* V2RxSwiftPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2RxSwiftPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879E3ACD1CE092BD00014D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		879E3ACF1CE092BD00014D03 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 		87D24B711CE0BCB0004C2D49 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				61D91DF91CEDC8CF00DE5972 /* ObservableArray.h */,
+				61D91DFA1CEDC8CF00DE5972 /* ObservableArray.swift */,
 				879E3ACF1CE092BD00014D03 /* ViewController.swift */,
 			);
 			name = View;
@@ -280,6 +285,7 @@
 				87D24B691CE09C47004C2D49 /* Weather.m in Sources */,
 				879E3AD01CE092BD00014D03 /* ViewController.swift in Sources */,
 				879E3ACE1CE092BD00014D03 /* AppDelegate.swift in Sources */,
+				61D91DFB1CEDC8CF00DE5972 /* ObservableArray.swift in Sources */,
 				87FBA75A1CE1F7E500BB62BF /* RxAlamofire.swift in Sources */,
 				87D24B6E1CE0A07F004C2D49 /* WeatherForecast.m in Sources */,
 			);

@@ -10,18 +10,24 @@
 
 @implementation Weather
 
--(id)initWithData:(NSDictionary *)weatherDict {
-    if (self = [super init]) {
+-(id)updateValue:(NSDictionary *)weatherDict {
+  
         self.weatherForecast = [[WeatherForecast alloc]init];
         self.city = [[weatherDict objectForKey:@"city"] valueForKey:@"name"];
         self.weatherForecast.temp = [[[[weatherDict objectForKey:@"list"] objectAtIndex:0] objectForKey:@"main"] valueForKey:@"temp"];
         self.weatherForecast.date = [[[weatherDict objectForKey:@"list"] objectAtIndex:0] valueForKey:@"dt"];
         self.weatherForecast.imageID = [[[[[weatherDict objectForKey:@"list"] objectAtIndex:0] objectForKey:@"weather"] objectAtIndex:0] valueForKey:@"icon"];
         self.weatherForecast.desc = [[[[[weatherDict objectForKey:@"list"] objectAtIndex:0] objectForKey:@"weather"] objectAtIndex:0] valueForKey:@"description"];
-        
-        self.languageArray = [[NSMutableArray alloc]initWithObjects:@"Objective-C", @"Swift", @"Java", nil];
-    }
+      NSLog(@"%@",self.languageArray);
+//        self.languageArray = [[NSMutableArray alloc]initWithObjects:@"Objective-C", @"Swift", @"Java", nil];
     return self;
 }
+
+
+-(id)init {
+   self.languageArray = [[NSMutableArray alloc]initWithObjects:@"Objective-C", @"Swift", @"Java", nil];
+  return self;
+}
+
 
 @end
