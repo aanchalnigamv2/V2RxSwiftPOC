@@ -39,7 +39,8 @@ class WeatherViewModel {
   
   var observableLanguageArray = PublishSubject<[AnyObject]>()
   
-  
+  var pointToModelViewArray: ObservableArray<String> = ["foo", "bar", "buzz"]
+    
   var weather: Weather? {
     didSet {
       if weather?.city != nil {

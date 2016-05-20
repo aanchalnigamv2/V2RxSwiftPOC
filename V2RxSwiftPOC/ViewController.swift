@@ -29,7 +29,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     var array = [AnyObject]()
   
   //NOTE : This is a ViewModel array
-  var pointToModelViewArray: ObservableArray<String> = ["foo", "bar", "buzz"]
+//  var pointToModelViewArray: ObservableArray<String> = ["foo", "bar", "buzz"]
   
   //NOTE : This is Model class array - from Objective C class
   var pointToObjectiveCArray = ObservableArray<NSMutableArray>()
@@ -77,9 +77,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
       
       // NOTE : This array represent the modelView array and respond as expected
       
-      pointToModelViewArray.rx_elements().subscribeNext { print($0) }
+      viewModel.pointToModelViewArray.rx_elements().subscribeNext { print($0) }
       
-      pointToModelViewArray.append("coffee")
+      viewModel.pointToModelViewArray.append("coffee")
       
       
         cityTextField.rx_text
@@ -126,7 +126,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
   @IBAction func addCity(sender: AnyObject) {
     
     // adding value to viewModel array and working fine
-    pointToModelViewArray.append("Test")
+    viewModel.pointToModelViewArray.append("Test")
     
     // adding value to model class array and it's not responding
     weather.languageArray.addObject("change made")
