@@ -12,7 +12,6 @@ import RxCocoa
 import RxSwift
 import Alamofire
 
-import ObservableArray
 
 class ViewController: UIViewController, UIAlertViewDelegate {
 
@@ -28,11 +27,12 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     var weather = Weather()
     var boundToViewModel = false
     var array = [AnyObject]()
-//    var observableLanguageArray = PublishSubject<[AnyObject]>()
   
-  var testArray = PublishSubject<[String]>()
+  //NOTE : This is a ViewModel array
+  var pointToModelViewArray: ObservableArray<String> = ["foo", "bar", "buzz"]
   
-  var demoArray = ["A","B","C"]
+  //NOTE : This is Model class array - from Objective C class
+  var pointToObjectiveCArray = ObservableArray<NSMutableArray>()
   
     func bindSourceToLabel(source: PublishSubject<String?>, label: UILabel) {
         source
@@ -54,19 +54,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
       .addDisposableTo(disposeBag)
   }
   
-  func bindTestArray(source : PublishSubject<[String]>, label: UILabel){
-    source
-      .subscribeNext { text in
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//          label.text = "\(text)"
-          
-          print(text)
-        })
-      }
-      .addDisposableTo(disposeBag)
-
-  }
-    
+  
     var alertController: UIAlertController? {
         didSet {
             if let alertController = alertController {
@@ -79,8 +67,19 @@ class ViewController: UIViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-      testArray.on(.Next(Array(demoArray)))
+      // NOTE : This array represent the objective c array in model class which we expected to be observable and respond on any change in it but it's not, our bad luck :(
       
+      pointToObjectiveCArray.append(weather.languageArray)
+      
+      pointToObjectiveCArray.rx_elements().subscribeNext({print($0)})
+      
+      weather.languageArray.addObject("New Value")
+      
+      // NOTE : This array represent the modelView array and respond as expected
+      
+      pointToModelViewArray.rx_elements().subscribeNext { print($0) }
+      
+      pointToModelViewArray.append("coffee")
       
       
         cityTextField.rx_text
@@ -95,10 +94,9 @@ class ViewController: UIViewController, UIAlertViewDelegate {
         bindSourceToLabel(viewModel.cityName, label: cityNameLabel)
         bindSourceToLabel(viewModel.degrees, label: tempLabel)
         bindSourceToLabel(viewModel.weatherDescription, label: descriptionLabel)
-//        bindArraySourceToLabel(viewModel.observableLanguageArray, label: showCities)
       
       
-      bindTestArray(testArray, label: showCities)
+     
         
         viewModel.observableLanguageArray.subscribeNext { data in
             self.array = data
@@ -109,7 +107,7 @@ class ViewController: UIViewController, UIAlertViewDelegate {
           }
           
           
-//            self.showCities.text = "\(self.array)"
+
         }
         .addDisposableTo(disposeBag)
       
@@ -123,17 +121,16 @@ class ViewController: UIViewController, UIAlertViewDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
   @IBAction func addCity(sender: AnyObject) {
     
-//    weather.languageArray.addObject("C++")
-    demoArray.append("A")
+    // adding value to viewModel array and working fine
+    pointToModelViewArray.append("Test")
+    
+    // adding value to model class array and it's not responding
+    weather.languageArray.addObject("change made")
   }
-  
-
-
 
 }
 

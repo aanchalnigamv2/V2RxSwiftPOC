@@ -27,7 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		61D91DF91CEDC8CF00DE5972 /* ObservableArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObservableArray.h; sourceTree = "<group>"; };
 		61D91DFA1CEDC8CF00DE5972 /* ObservableArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableArray.swift; sourceTree = "<group>"; };
 		879E3ACA1CE092BD00014D03 /* V2RxSwiftPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V2RxSwiftPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		879E3ACD1CE092BD00014D03 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,7 +128,6 @@
 		87D24B711CE0BCB0004C2D49 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				61D91DF91CEDC8CF00DE5972 /* ObservableArray.h */,
 				61D91DFA1CEDC8CF00DE5972 /* ObservableArray.swift */,
 				879E3ACF1CE092BD00014D03 /* ViewController.swift */,
 			);
